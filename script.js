@@ -10,7 +10,7 @@ let currentState = "work"; // 'work' atau 'break'
 
 const timerDisplay = document.getElementById("timer");
 
-const { setWorkBackground, setBreakBackground } = setupBackgroundChanges("#FF6347", "#4CAF50");
+const { setWorkBackground, setBreakBackground } = setupBackgroundChanges("#1F2937", "#065F46");
 
 function startWorkTimer() {
   currentTimer = new Timer(workDuration, updateTimerDisplay, onWorkTimerComplete);
@@ -46,12 +46,12 @@ function updateTimerDisplay(minutes, seconds) {
 }
 
 function onWorkTimerComplete() {
-  notifyUser("Waktu Kerja Selesai!");
+  notifyUser("Work session completed!");
   startBreakTimer();
 }
 
 function onBreakTimerComplete() {
-  notifyUser("Waktu Istirahat Selesai! Kembali bekerja.");
+  notifyUser("Break session completed! Back to work.");
   startWorkTimer();
 }
 
@@ -61,7 +61,7 @@ function notifyUser(message) {
   }
 }
 
-setupButtonCallbacks(startWorkTimer, stopTimer, resetTimer, startBreakTimer);
+setupButtonCallbacks(startWorkTimer, stopTimer, resetTimer, startWorkTimer, startBreakTimer);
 
 // Request permission for notifications
 if ("Notification" in window) {
