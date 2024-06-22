@@ -20,13 +20,13 @@ export class Timer {
     }
   }
 
-  stop() {
+  pause() {
     clearInterval(this.interval);
     this.isRunning = false;
   }
 
   reset(minutes) {
-    this.stop();
+    this.pause();
     this.secondsRemaining = minutes * 60;
     this.onTick(minutes, 0);
     this.isRunning = false;
