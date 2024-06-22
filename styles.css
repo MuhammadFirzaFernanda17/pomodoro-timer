@@ -1,3 +1,8 @@
+body {
+  font-family: "Arial", sans-serif;
+  transition: background-color 0.3s;
+}
+
 .btn {
   padding: 15px;
   font-size: 1.5em;
@@ -26,8 +31,6 @@
 .card {
   background-color: rgba(31, 41, 55, 0.7); /* Transparent noir */
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Soft white shadow */
-}
-
-.container {
-  max-width: 400px;
+  max-width: 350px;
+  margin: auto;
 }

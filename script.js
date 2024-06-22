@@ -10,34 +10,37 @@ let currentState = "work"; // 'work' atau 'break'
 
 const timerDisplay = document.getElementById("timer");
 
-const { setWorkBackground, setBreakBackground } = setupBackgroundChanges("#1F2937", "#065F46");
+const { setWorkBackground, setBreakBackground } = setupBackgroundChanges("#2C3E50", "#16A085");
 
-function startWorkTimer() {
+function initializeWorkTimer() {
   currentTimer = new Timer(workDuration, updateTimerDisplay, onWorkTimerComplete);
-  currentTimer.start();
+  updateTimerDisplay(workDuration, 0);
   setWorkBackground();
   currentState = "work";
 }
 
-function startBreakTimer() {
+function initializeBreakTimer() {
   currentTimer = new Timer(breakDuration, updateTimerDisplay, onBreakTimerComplete);
-  currentTimer.start();
+  updateTimerDisplay(breakDuration, 0);
   setBreakBackground();
   currentState = "break";
+}
+
+function startTimer() {
+  if (currentTimer) {
+    currentTimer.start();
+  }
+}
+
+function pauseTimer() {
+  if (currentTimer) {
+    currentTimer.pause();
+  }
 }
 
 function stopTimer() {
   if (currentTimer) {
     currentTimer.stop();
-  }
-}
-
-function resetTimer() {
-  stopTimer();
-  if (currentState === "work") {
-    startWorkTimer();
-  } else {
-    startBreakTimer();
   }
 }
 
@@ -47,12 +50,12 @@ function updateTimerDisplay(minutes, seconds) {
 
 function onWorkTimerComplete() {
   notifyUser("Work session completed!");
-  startBreakTimer();
+  initializeBreakTimer();
 }
 
 function onBreakTimerComplete() {
   notifyUser("Break session completed! Back to work.");
-  startWorkTimer();
+  initializeWorkTimer();
 }
 
 function notifyUser(message) {
@@ -61,7 +64,7 @@ function notifyUser(message) {
   }
 }
 
-setupButtonCallbacks(startWorkTimer, stopTimer, resetTimer, startWorkTimer, startBreakTimer);
+setupButtonCallbacks(startTimer, pauseTimer, stopTimer, initializeWorkTimer, initializeBreakTimer);
 
 // Request permission for notifications
 if ("Notification" in window) {
@@ -69,4 +72,4 @@ if ("Notification" in window) {
 }
 
 // Initial display
-updateTimerDisplay(workDuration, 0);
+initializeWorkTimer();

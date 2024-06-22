@@ -26,16 +26,18 @@ export function setupButtonCallbacks(startCallback, pauseCallback, stopCallback,
   });
 
   workBtn.addEventListener("click", () => {
-    startBtn.style.display = "inline-block";
-    pauseBtn.style.display = "none";
-    stopBtn.style.display = "none";
     workCallback();
+    resetButtonState();
   });
 
   breakBtn.addEventListener("click", () => {
+    breakCallback();
+    resetButtonState();
+  });
+
+  function resetButtonState() {
     startBtn.style.display = "inline-block";
     pauseBtn.style.display = "none";
     stopBtn.style.display = "none";
-    breakCallback();
-  });
+  }
 }

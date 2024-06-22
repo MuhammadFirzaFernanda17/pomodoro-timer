@@ -25,6 +25,12 @@ export class Timer {
     this.isRunning = false;
   }
 
+  stop() {
+    this.pause();
+    this.secondsRemaining = 0;
+    this.onTick(0, 0);
+  }
+
   reset(minutes) {
     this.pause();
     this.secondsRemaining = minutes * 60;
