@@ -1,0 +1,74 @@
+body {
+  font-family: "Arial", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f44336;
+  transition: background-color 0.3s;
+}
+
+.container {
+  text-align: center;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.timer {
+  font-size: 4em;
+  margin: 20px 0;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 15px;
+  font-size: 1.5em;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+.start {
+  display: inline-block;
+}
+
+.stop,
+.reset,
+.break {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 10px;
+  }
+  .timer {
+    font-size: 3em;
+  }
+  .btn {
+    padding: 12px;
+    font-size: 1.2em;
+  }
+}
